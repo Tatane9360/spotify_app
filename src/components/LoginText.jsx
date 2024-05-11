@@ -8,7 +8,7 @@ function LoginText() {
         <ul className="list-disc ml-4">
             <li className="mb-2">Apprenez en plus sur vos artistes preférés !</li>
             <li className="mb-2">Un quizz exceptionnel pour decouvrir des artistes</li>
-            <li className="">Un lecteur qui permet de decouvrir de nouvelle musique et de les ajouter a vos favoris ! </li>  
+            <li className="">Un lecteur musique qui permet de decouvrir de nouvelle musique et de les ajouter a vos favoris ! </li>  
         </ul>
       </p>
     </div>
