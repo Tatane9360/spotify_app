@@ -95,7 +95,9 @@ function App() {
         ) : (
           <div>No Image</div>
         )}
-        <p><b>Artiste :</b> {artist.name}</p>
+        <p>
+          <b>Artiste :</b> {artist.name}
+        </p>
         {artist.genres.length ? (
           <p>
             <b>genre :</b> {artist.genres[0]}, {artist.genres[1]}{" "}
@@ -104,11 +106,27 @@ function App() {
           <p>genre musicale : Oups, cette artiste n'a pas de genres</p>
         )}
 
-        <p><b>followers</b>: {artist.followers.total}</p>
+        <p>
+          <b>followers</b>: {artist.followers.total}
+        </p>
+        <div className=" flex justify-around mt-4">
+          <button className="block bg-green-800 hover:bg-black transition-all px-4 rounded-full">
+            <a
+              href={artist.external_urls.spotify}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Voir l'artiste
+            </a>
+          </button>
 
-        <button onClick={() => getArtistAlbums(artist.id)}>
-          Voir les Albums
-        </button>
+          <button
+            className="block bg-green-800 hover:bg-black transition-all px-4 rounded-full"
+            onClick={() => getArtistAlbums(artist.id)}
+          >
+            Voir les Albums
+          </button>
+        </div>
 
         {selectedArtistAlbums.length > 0 && artist.id === selectedArtistId && (
           <div>
@@ -123,9 +141,15 @@ function App() {
                         alt="cover de 'l'album"
                         className="size-40 rounded-2xl max-w-none"
                       />
-                      <p><b>titre:</b> {album.name}</p>
-                      <p><b>date:</b> {album.release_date}</p>
-                      <p><b>Piste:</b> {album.total_tracks}</p>
+                      <p>
+                        <b>titre:</b> {album.name}
+                      </p>
+                      <p>
+                        <b>date:</b> {album.release_date}
+                      </p>
+                      <p>
+                        <b>Piste:</b> {album.total_tracks}
+                      </p>
                     </div>
                   ) : (
                     <div>No Image</div>
