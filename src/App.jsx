@@ -75,7 +75,6 @@ function App() {
       setSelectedArtistAlbums(data.items);
       setSelectedArtistId(artistId);
       console.log(selectedArtistAlbums);
-      console.log(selectedArtistId);
     } catch (error) {
       console.error("Error fetching artist albums:", error);
     }
@@ -83,31 +82,29 @@ function App() {
 
   const renderArtists = () => {
     return artists.map((artist) => (
-      <div key={artist.id} className="bg-green-500 p-4 m-4 rounded-2xl w-10/12 h-auto text-wrap text-start">
+      <div
+        key={artist.id}
+        className="bg-green-500 p-4 m-4 rounded-2xl w-10/12 h-auto text-wrap text-start"
+      >
         {artist.images.length ? (
           <img
-            className="size-[200px] m-auto rounded-full p-4"
+            className="size-[200px] m-auto rounded-full p-4 object-cover"
             src={artist.images[0].url}
             alt="d"
           />
         ) : (
           <div>No Image</div>
         )}
-        <p>name : {artist.name}</p>
+        <p><b>Artiste :</b> {artist.name}</p>
         {artist.genres.length ? (
           <p>
-            genre : {artist.genres[0]}, {artist.genres[1]}{" "}
+            <b>genre :</b> {artist.genres[0]}, {artist.genres[1]}{" "}
           </p>
         ) : (
           <p>genre musicale : Oups, cette artiste n'a pas de genres</p>
         )}
-{/* 
-        <p>
-          genre : {artist.genres[0]}, {artist.genres[1]}{" "}
-        </p> */}
-        <p></p>
 
-        {/* <p>{artist.popularity}</p> */}
+        <p><b>followers</b>: {artist.followers.total}</p>
 
         <button onClick={() => getArtistAlbums(artist.id)}>
           Voir les Albums
@@ -116,18 +113,20 @@ function App() {
         {selectedArtistAlbums.length > 0 && artist.id === selectedArtistId && (
           <div>
             <h2>Albums de {artist.name}</h2>
-            <div className="bg-green-400 w-auto flex flex-row overflow-x-scroll border-yellow-300 border-8">
-              {" "}
+            <div className="bg-green-400 w-auto flex flex-row overflow-x-scroll border-green-700 border-8 mt-2">
               {selectedArtistAlbums.map((album) => (
-                <div key={album.id} className="bg-red-500 m-4   ">
+                <div key={album.id} className="bg-green-700 p-4 m-4">
                   {album.images.length ? (
-                    <img
-                      //   width={"125px"}
-                      //   height={"125px"}
-                      src={album.images[0].url}
-                      alt="cover de 'l'album"
-                      className="size-40 rounded-2xl max-w-none	"
-                    />
+                    <div>
+                      <img
+                        src={album.images[0].url}
+                        alt="cover de 'l'album"
+                        className="size-40 rounded-2xl max-w-none"
+                      />
+                      <p><b>titre:</b> {album.name}</p>
+                      <p><b>date:</b> {album.release_date}</p>
+                      <p><b>Piste:</b> {album.total_tracks}</p>
+                    </div>
                   ) : (
                     <div>No Image</div>
                   )}
