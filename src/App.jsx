@@ -52,10 +52,11 @@ function App() {
         params: {
           q: searchKey,
           type: "artist",
-          limit: "3",
+          limit: "6",
         },
       });
       setArtists(data.artists.items);
+      console.table(artists);
     } catch (error) {
       console.error("Error searching artists:", error);
     }
@@ -82,18 +83,30 @@ function App() {
 
   const renderArtists = () => {
     return artists.map((artist) => (
-      <div key={artist.id}>
+      <div key={artist.id} className="bg-green-500 p-4 m-4 rounded-2xl w-10/12 h-auto text-wrap text-start">
         {artist.images.length ? (
           <img
-            width={"200px"}
-            height={"200px"}
+            className="size-[200px] m-auto rounded-full p-4"
             src={artist.images[0].url}
-            alt=""
+            alt="d"
           />
         ) : (
           <div>No Image</div>
         )}
-        <p>{artist.name}</p>
+        <p>name : {artist.name}</p>
+        {artist.genres.length ? (
+          <p>
+            genre : {artist.genres[0]}, {artist.genres[1]}{" "}
+          </p>
+        ) : (
+          <p>genre musicale : Oups, cette artiste n'a pas de genres</p>
+        )}
+{/* 
+        <p>
+          genre : {artist.genres[0]}, {artist.genres[1]}{" "}
+        </p> */}
+        <p></p>
+
         {/* <p>{artist.popularity}</p> */}
 
         <button onClick={() => getArtistAlbums(artist.id)}>
@@ -109,11 +122,11 @@ function App() {
                 <div key={album.id} className="bg-red-500 m-4   ">
                   {album.images.length ? (
                     <img
-                    //   width={"125px"}
-                    //   height={"125px"}
+                      //   width={"125px"}
+                      //   height={"125px"}
                       src={album.images[0].url}
                       alt="cover de 'l'album"
-                      className="w-40 h-40 rounded-2xl"
+                      className="size-40 rounded-2xl max-w-none	"
                     />
                   ) : (
                     <div>No Image</div>
@@ -139,7 +152,7 @@ function App() {
           </a>
         ) : (
           <button
-            className="absolute top-5 end-4 p-4 bg-green-500 rounded-full w-50 text-2"
+            className="absolute top-5 end-4 p-4 bg-green-500 rounded-full w-50 text-2 border border-white shadow-lg shadow-white/40"
             onClick={logout}
           >
             Logout
