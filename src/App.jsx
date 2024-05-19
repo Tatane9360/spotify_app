@@ -1,10 +1,10 @@
 // src/App.js
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import Artists from "./components/Artists";
+import Artists from "./components/Artists"
 
 function App() {
   const [token, setToken] = useState("");
@@ -35,6 +35,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+
         <Routes>
           <Route path="/" element={<Home token={token} logout={logout} />} />
           <Route path="/login" element={<Login token={token} />} />
@@ -46,3 +47,4 @@ function App() {
 }
 
 export default App;
+      

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import NotFound from '../img/notfound.png'
+import Navbar from "./Navbar";
 
 const ArtistsInfo = ({ token }) => {
     const [searchKey, setSearchKey] = useState("");
@@ -48,7 +49,7 @@ const ArtistsInfo = ({ token }) => {
         return artists.map((artist) => (
           <div
             key={artist.id}
-            className="bg-green-500 mx-auto p-4 m-4 rounded-2xl w-10/12 h-auto text-wrap text-start"
+            className="bg-green-500 mx-auto p-4 m-4 rounded-2xl h-auto text-wrap text-start"
           >
             {artist.images.length ? (
               <img
@@ -133,10 +134,11 @@ const ArtistsInfo = ({ token }) => {
 
       return (
         <div>
-          <form onSubmit={searchArtists}>
+          <Navbar />
+          <form onSubmit={searchArtists} className="mt-16">
             <input
               type="text"
-              className="text-black"
+              className="text-black "
               value={searchKey}
               onChange={(e) => setSearchKey(e.target.value)}
               placeholder="recherchez votre artiste"

@@ -1,6 +1,7 @@
 // src/components/Home.js
 import React from "react";
 import { Link } from "react-router-dom";
+import LoginText from "./LoginText";
 
 const Home = ({ token, logout }) => {
   const CLIENT_ID = "4a5d9f2f0c2e4baf95dc94840bd32fd5";
@@ -28,13 +29,11 @@ const Home = ({ token, logout }) => {
 
       {token ? (
         <Link to="/artists">
-          <button className="p-4 bg-green-500 rounded-full w-50 text-2xl">Go to Artists</button>
+          <button className="p-4 bg-green-500 rounded-full w-50 text-2xl">
+            Go to Artists
+          </button>
         </Link>
-      ) : (
-        <Link to="/login">
-          <button className="p-4 bg-green-500 rounded-full w-50 text-2xl">Login</button>
-        </Link>
-      )}
+      ) : <LoginText />}
     </div>
   );
 };
